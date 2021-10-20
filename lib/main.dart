@@ -50,21 +50,10 @@ class _BleHandlerState extends State<BleHandler> {
           iconOn: Icons.lightbulb,
           iconOff: Icons.lightbulb_outlined,
           onChanged: (bool state) {
-            ledState = state;
-            led();
-
-          
+            deviceInteraction(state);
           },
         ),
       ])
     ]);
-  }
-}
-
-led() async { // method for writing data to recieve characteristic
-  if (ledState) {
-    await rxCharacteristic.write([0x4C, 0x31]);
-  } else {
-    await rxCharacteristic.write([0x4C, 0x30]);
   }
 }
